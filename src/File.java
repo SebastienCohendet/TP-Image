@@ -10,6 +10,8 @@ public class File {
    protected String fichier ="lena.pgm";
    public int tailleX=1;
    public int tailleY=1;
+   protected int [] nuancier = new int[255];
+
    
    public File() {
         try{
@@ -26,6 +28,12 @@ public class File {
                             tailleY= Integer.parseInt(entiers[1]);
                         }
                         chaine+=ligne+"\n";
+                        if (i>3) {
+                            String[] entiers1=ligne.split("	");
+                            for(int j=0; j<entiers1.length; j++) {
+                                this.nuancier[Integer.parseInt(entiers1[j])]++;
+                            }
+                        }
                         i++;
                 }
                 br.close(); 
